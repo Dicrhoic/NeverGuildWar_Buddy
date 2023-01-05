@@ -36,26 +36,17 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPanel2 = new System.Windows.Forms.Panel();
             this.timerLabel = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.homeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setupsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewSetupsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.createSetupsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setGWDateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.countdownTimer = new System.Windows.Forms.Timer(this.components);
             this.mainPanel.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
             this.mainPanel.Controls.Add(this.tabControl1);
             this.mainPanel.Controls.Add(this.timerLabel);
-            this.mainPanel.Controls.Add(this.menuStrip1);
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
             this.mainPanel.Name = "mainPanel";
@@ -67,7 +58,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tabControl1.Location = new System.Drawing.Point(0, 54);
+            this.tabControl1.Location = new System.Drawing.Point(0, 30);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1904, 521);
@@ -126,64 +117,11 @@
             this.timerLabel.AutoSize = true;
             this.timerLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.timerLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.timerLabel.Location = new System.Drawing.Point(0, 24);
+            this.timerLabel.Location = new System.Drawing.Point(0, 0);
             this.timerLabel.Name = "timerLabel";
             this.timerLabel.Size = new System.Drawing.Size(120, 30);
             this.timerLabel.TabIndex = 0;
             this.timerLabel.Text = "Countdown";
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.homeToolStripMenuItem,
-            this.setupsToolStripMenuItem,
-            this.settingsToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1904, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // homeToolStripMenuItem
-            // 
-            this.homeToolStripMenuItem.Name = "homeToolStripMenuItem";
-            this.homeToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.homeToolStripMenuItem.Text = "Home";
-            // 
-            // setupsToolStripMenuItem
-            // 
-            this.setupsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.viewSetupsToolStripMenuItem,
-            this.createSetupsToolStripMenuItem});
-            this.setupsToolStripMenuItem.Name = "setupsToolStripMenuItem";
-            this.setupsToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
-            this.setupsToolStripMenuItem.Text = "Setups";
-            // 
-            // viewSetupsToolStripMenuItem
-            // 
-            this.viewSetupsToolStripMenuItem.Name = "viewSetupsToolStripMenuItem";
-            this.viewSetupsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.viewSetupsToolStripMenuItem.Text = "View Setups";
-            // 
-            // createSetupsToolStripMenuItem
-            // 
-            this.createSetupsToolStripMenuItem.Name = "createSetupsToolStripMenuItem";
-            this.createSetupsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.createSetupsToolStripMenuItem.Text = "Create Setups";
-            // 
-            // settingsToolStripMenuItem
-            // 
-            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.setGWDateToolStripMenuItem});
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.settingsToolStripMenuItem.Text = "Settings";
-            // 
-            // setGWDateToolStripMenuItem
-            // 
-            this.setGWDateToolStripMenuItem.Name = "setGWDateToolStripMenuItem";
-            this.setGWDateToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.setGWDateToolStripMenuItem.Text = "Set GW Date";
             // 
             // HomePageComponent
             // 
@@ -204,8 +142,6 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -219,13 +155,6 @@
         private TabPage tabPage2;
         private Panel tabPanel2;
         private Label timerLabel;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem homeToolStripMenuItem;
-        private ToolStripMenuItem setupsToolStripMenuItem;
-        private ToolStripMenuItem viewSetupsToolStripMenuItem;
-        private ToolStripMenuItem createSetupsToolStripMenuItem;
-        private ToolStripMenuItem settingsToolStripMenuItem;
-        private ToolStripMenuItem setGWDateToolStripMenuItem;
         private System.Windows.Forms.Timer countdownTimer;
     }
 }

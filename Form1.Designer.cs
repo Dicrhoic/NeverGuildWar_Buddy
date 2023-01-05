@@ -31,8 +31,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setupsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewSetupsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.createSetupsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mainPanel = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,30 +54,26 @@
             // 
             // setupsToolStripMenuItem
             // 
-            this.setupsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.viewSetupsToolStripMenuItem,
-            this.createSetupsToolStripMenuItem});
             this.setupsToolStripMenuItem.Name = "setupsToolStripMenuItem";
             this.setupsToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.setupsToolStripMenuItem.Text = "Setups";
+            this.setupsToolStripMenuItem.Click += new System.EventHandler(this.LoadSetupsForm);
             // 
-            // viewSetupsToolStripMenuItem
+            // mainPanel
             // 
-            this.viewSetupsToolStripMenuItem.Name = "viewSetupsToolStripMenuItem";
-            this.viewSetupsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.viewSetupsToolStripMenuItem.Text = "View Setups";
-            // 
-            // createSetupsToolStripMenuItem
-            // 
-            this.createSetupsToolStripMenuItem.Name = "createSetupsToolStripMenuItem";
-            this.createSetupsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.createSetupsToolStripMenuItem.Text = "Create Setups";
+            this.mainPanel.AutoScroll = true;
+            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainPanel.Location = new System.Drawing.Point(0, 24);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(1313, 426);
+            this.mainPanel.TabIndex = 2;
             // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1313, 450);
+            this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.menuStrip1);
             this.Name = "HomePage";
             this.Text = "Home";
@@ -95,7 +90,6 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem setupsToolStripMenuItem;
-        private ToolStripMenuItem viewSetupsToolStripMenuItem;
-        private ToolStripMenuItem createSetupsToolStripMenuItem;
+        private Panel mainPanel;
     }
 }
