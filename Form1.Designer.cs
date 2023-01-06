@@ -30,8 +30,13 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateDBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.characterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.summonsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.weaponsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setupsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.setGWDateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,9 +53,43 @@
             // 
             // fileToolStripMenuItem
             // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.updateDBToolStripMenuItem,
+            this.setGWDateToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
+            // 
+            // updateDBToolStripMenuItem
+            // 
+            this.updateDBToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.characterToolStripMenuItem,
+            this.summonsToolStripMenuItem,
+            this.weaponsToolStripMenuItem});
+            this.updateDBToolStripMenuItem.Name = "updateDBToolStripMenuItem";
+            this.updateDBToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.updateDBToolStripMenuItem.Text = "UpdateDB";
+            // 
+            // characterToolStripMenuItem
+            // 
+            this.characterToolStripMenuItem.Name = "characterToolStripMenuItem";
+            this.characterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.characterToolStripMenuItem.Text = "Characters";
+            this.characterToolStripMenuItem.Click += new System.EventHandler(this.characterToolStripMenuItem_Click);
+            // 
+            // summonsToolStripMenuItem
+            // 
+            this.summonsToolStripMenuItem.Name = "summonsToolStripMenuItem";
+            this.summonsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.summonsToolStripMenuItem.Text = "Summons";
+            this.summonsToolStripMenuItem.Click += new System.EventHandler(this.SummonUpdate);
+            // 
+            // weaponsToolStripMenuItem
+            // 
+            this.weaponsToolStripMenuItem.Name = "weaponsToolStripMenuItem";
+            this.weaponsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.weaponsToolStripMenuItem.Text = "Weapons";
+            this.weaponsToolStripMenuItem.Click += new System.EventHandler(this.WeaponUpdate);
             // 
             // setupsToolStripMenuItem
             // 
@@ -67,6 +106,12 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(1313, 426);
             this.mainPanel.TabIndex = 2;
+            // 
+            // setGWDateToolStripMenuItem
+            // 
+            this.setGWDateToolStripMenuItem.Name = "setGWDateToolStripMenuItem";
+            this.setGWDateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setGWDateToolStripMenuItem.Text = "Set GW Date";
             // 
             // HomePage
             // 
@@ -91,5 +136,10 @@
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem setupsToolStripMenuItem;
         private Panel mainPanel;
+        private ToolStripMenuItem updateDBToolStripMenuItem;
+        private ToolStripMenuItem characterToolStripMenuItem;
+        private ToolStripMenuItem summonsToolStripMenuItem;
+        private ToolStripMenuItem weaponsToolStripMenuItem;
+        private ToolStripMenuItem setGWDateToolStripMenuItem;
     }
 }

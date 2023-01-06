@@ -13,13 +13,14 @@ namespace NeverGuildWar_Buddy.Classes.SQLite
     {
         string? exPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         string? dbPath = null;
-        string CharacterSummonDB = "localDB.db";
+        string CharacterSummonDB = "LocalDatabase.db";
         string GWDBName = "GW.db";
         HomePage? homePage;
+ 
         static public string GetConnectionString()
         {
 
-            string path = Application.StartupPath + "Database\\localDB.db";
+            string path = Application.StartupPath + "Database\\LocalDatabase.db";
             Debug.WriteLine($"path is {path}");
             return $"Data Source={path};";
             //return $"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={path};Integrated Security=True";
@@ -57,7 +58,7 @@ namespace NeverGuildWar_Buddy.Classes.SQLite
                     connection.Close();
                     string msg = $"Connected to Database file {CharacterSummonDB}.";
                     string cap = "Database connection successful";
-                    //mB.SuccessMB(msg, cap); 
+                    mB.SuccessMB(msg, cap); 
                     return true;
 
                 }
@@ -98,6 +99,26 @@ namespace NeverGuildWar_Buddy.Classes.SQLite
                 MBHelper mB = new MBHelper();
                 string caption = $"Error Adding to DB";
                 mB.ErrorMB(ex.Message, caption);
+            }
+        }
+
+        public void LockParent()
+        {
+            var parent = Application.OpenForms["Form1"];
+            if (parent != null)
+            {
+                homePage = (HomePage)parent;
+                homePage.Enabled = false;
+            }
+        }
+
+        public void UnlockParent()
+        {
+            var parent = Application.OpenForms["Form1"];
+            if (parent != null)
+            {
+                homePage = (HomePage)parent;
+                homePage.Enabled = true;
             }
         }
     }
