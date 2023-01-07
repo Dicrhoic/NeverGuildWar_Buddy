@@ -25,5 +25,53 @@ namespace NeverGuildWar_Buddy.Forms.User_Controls
             potLabel.Text = $"{pot}";
             honourTotalLabel.Text = $"{totalHonour}";
         }
+
+        public void UpdateHonourPerMin(decimal str)
+        {
+            hpm.Text = $"{str}";
+        }
+
+        private void DisplaysDetail(object sender, EventArgs e)
+        {
+            if(sender is Control)
+            {
+                Label label = (Label)sender;
+                System.Windows.Forms.ToolTip ToolTip1 = new System.Windows.Forms.ToolTip();
+                if (label is not null )
+                {
+                    switch(label.Tag)
+                    {
+                        case "name":
+                            ToolTip1.SetToolTip(label, "Name of raid");
+                            break;
+                        case "honourEarn":
+                            ToolTip1.SetToolTip(label, "Honours earned per raid");
+                            break;
+                        case "meat":
+                            ToolTip1.SetToolTip(label, "Meat cost per raid");
+                            break;
+                        case "battles":
+                            ToolTip1.SetToolTip(label, "Number of battles needed");
+                            break;
+                        case "meatCost":
+                            ToolTip1.SetToolTip(label, "Total cost of meat");
+                            break;
+                        case "token":
+                            ToolTip1.SetToolTip(label, "Tokens earned");
+                            break;
+                        case "honourTotal":
+                            ToolTip1.SetToolTip(label, "Total honours earned");
+                            break;
+                        case "pot":
+                            ToolTip1.SetToolTip(label, "Amount of potions needed*");
+                            break;
+                        case "honrpermin":
+                            ToolTip1.SetToolTip(label, "Honours earned per minute");
+                            break;
+                    }
+                }
+            }
+
+        }
     }
 }

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.calculatorPanel = new System.Windows.Forms.Panel();
             this.optionsPanel = new System.Windows.Forms.Panel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
@@ -48,20 +47,17 @@
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.filterPanel = new System.Windows.Forms.Panel();
             this.raidChoicePanel = new System.Windows.Forms.Panel();
-            this.meatPanel = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.meatNum = new System.Windows.Forms.NumericUpDown();
             this.levelSelectPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.level5CB = new System.Windows.Forms.CheckBox();
+            this.cb90 = new System.Windows.Forms.CheckBox();
+            this.cb95 = new System.Windows.Forms.CheckBox();
+            this.cb100 = new System.Windows.Forms.CheckBox();
+            this.cb150 = new System.Windows.Forms.CheckBox();
+            this.cb200 = new System.Windows.Forms.CheckBox();
             this.meatFarmPanel = new System.Windows.Forms.Panel();
             this.exPOtpnRB = new System.Windows.Forms.RadioButton();
             this.exOtpnRB = new System.Windows.Forms.RadioButton();
+            this.calculatorPanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
-            this.calculatorPanel.SuspendLayout();
             this.optionsPanel.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
@@ -73,38 +69,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             this.filterPanel.SuspendLayout();
             this.raidChoicePanel.SuspendLayout();
-            this.meatPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.meatNum)).BeginInit();
             this.levelSelectPanel.SuspendLayout();
             this.meatFarmPanel.SuspendLayout();
+            this.calculatorPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.optionsPanel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.filterPanel, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 292F));
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1257, 539);
             this.tableLayoutPanel1.TabIndex = 2;
-            // 
-            // calculatorPanel
-            // 
-            this.calculatorPanel.Controls.Add(this.tableLayoutPanel1);
-            this.calculatorPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.calculatorPanel.Location = new System.Drawing.Point(0, 0);
-            this.calculatorPanel.Name = "calculatorPanel";
-            this.calculatorPanel.Size = new System.Drawing.Size(1257, 539);
-            this.calculatorPanel.TabIndex = 3;
             // 
             // optionsPanel
             // 
@@ -113,7 +96,7 @@
             this.optionsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.optionsPanel.Location = new System.Drawing.Point(3, 3);
             this.optionsPanel.Name = "optionsPanel";
-            this.optionsPanel.Size = new System.Drawing.Size(1251, 66);
+            this.optionsPanel.Size = new System.Drawing.Size(1251, 74);
             this.optionsPanel.TabIndex = 3;
             // 
             // flowLayoutPanel2
@@ -126,7 +109,7 @@
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 32);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(759, 34);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(759, 42);
             this.flowLayoutPanel2.TabIndex = 1;
             // 
             // label5
@@ -202,6 +185,7 @@
             this.button1.TabIndex = 7;
             this.button1.Text = "Calculate";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.CreateData);
             // 
             // flowLayoutPanel1
             // 
@@ -322,14 +306,13 @@
             // 
             this.filterPanel.Controls.Add(this.raidChoicePanel);
             this.filterPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.filterPanel.Location = new System.Drawing.Point(3, 75);
+            this.filterPanel.Location = new System.Drawing.Point(3, 83);
             this.filterPanel.Name = "filterPanel";
-            this.filterPanel.Size = new System.Drawing.Size(1251, 69);
+            this.filterPanel.Size = new System.Drawing.Size(1251, 453);
             this.filterPanel.TabIndex = 4;
             // 
             // raidChoicePanel
             // 
-            this.raidChoicePanel.Controls.Add(this.meatPanel);
             this.raidChoicePanel.Controls.Add(this.levelSelectPanel);
             this.raidChoicePanel.Controls.Add(this.meatFarmPanel);
             this.raidChoicePanel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -338,102 +321,76 @@
             this.raidChoicePanel.Size = new System.Drawing.Size(1251, 50);
             this.raidChoicePanel.TabIndex = 1;
             // 
-            // meatPanel
-            // 
-            this.meatPanel.Controls.Add(this.label13);
-            this.meatPanel.Controls.Add(this.meatNum);
-            this.meatPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.meatPanel.Location = new System.Drawing.Point(454, 0);
-            this.meatPanel.Name = "meatPanel";
-            this.meatPanel.Size = new System.Drawing.Size(306, 50);
-            this.meatPanel.TabIndex = 4;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(0, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(111, 21);
-            this.label13.TabIndex = 8;
-            this.label13.Text = "Current Meat:";
-            // 
-            // meatNum
-            // 
-            this.meatNum.Dock = System.Windows.Forms.DockStyle.Right;
-            this.meatNum.Location = new System.Drawing.Point(186, 0);
-            this.meatNum.Maximum = new decimal(new int[] {
-            50000,
-            0,
-            0,
-            0});
-            this.meatNum.Name = "meatNum";
-            this.meatNum.Size = new System.Drawing.Size(120, 23);
-            this.meatNum.TabIndex = 9;
-            // 
             // levelSelectPanel
             // 
-            this.levelSelectPanel.Controls.Add(this.checkBox1);
-            this.levelSelectPanel.Controls.Add(this.checkBox2);
-            this.levelSelectPanel.Controls.Add(this.checkBox3);
-            this.levelSelectPanel.Controls.Add(this.checkBox4);
-            this.levelSelectPanel.Controls.Add(this.level5CB);
+            this.levelSelectPanel.Controls.Add(this.cb90);
+            this.levelSelectPanel.Controls.Add(this.cb95);
+            this.levelSelectPanel.Controls.Add(this.cb100);
+            this.levelSelectPanel.Controls.Add(this.cb150);
+            this.levelSelectPanel.Controls.Add(this.cb200);
             this.levelSelectPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.levelSelectPanel.Location = new System.Drawing.Point(91, 0);
             this.levelSelectPanel.Name = "levelSelectPanel";
-            this.levelSelectPanel.Size = new System.Drawing.Size(363, 50);
+            this.levelSelectPanel.Size = new System.Drawing.Size(668, 50);
             this.levelSelectPanel.TabIndex = 2;
             // 
-            // checkBox1
+            // cb90
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(3, 3);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(61, 19);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "NM 90";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cb90.AutoSize = true;
+            this.cb90.Enabled = false;
+            this.cb90.Location = new System.Drawing.Point(3, 3);
+            this.cb90.Name = "cb90";
+            this.cb90.Size = new System.Drawing.Size(58, 19);
+            this.cb90.TabIndex = 0;
+            this.cb90.Text = "NM90";
+            this.cb90.UseVisualStyleBackColor = true;
+            this.cb90.CheckedChanged += new System.EventHandler(this.UpdateCalculatorList);
             // 
-            // checkBox2
+            // cb95
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(70, 3);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(61, 19);
-            this.checkBox2.TabIndex = 1;
-            this.checkBox2.Text = "NM 95";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.cb95.AutoSize = true;
+            this.cb95.Enabled = false;
+            this.cb95.Location = new System.Drawing.Point(67, 3);
+            this.cb95.Name = "cb95";
+            this.cb95.Size = new System.Drawing.Size(58, 19);
+            this.cb95.TabIndex = 1;
+            this.cb95.Text = "NM95";
+            this.cb95.UseVisualStyleBackColor = true;
+            this.cb95.CheckedChanged += new System.EventHandler(this.UpdateCalculatorList);
             // 
-            // checkBox3
+            // cb100
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(137, 3);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(67, 19);
-            this.checkBox3.TabIndex = 2;
-            this.checkBox3.Text = "NM 100";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.cb100.AutoSize = true;
+            this.cb100.Enabled = false;
+            this.cb100.Location = new System.Drawing.Point(131, 3);
+            this.cb100.Name = "cb100";
+            this.cb100.Size = new System.Drawing.Size(64, 19);
+            this.cb100.TabIndex = 2;
+            this.cb100.Text = "NM100";
+            this.cb100.UseVisualStyleBackColor = true;
+            this.cb100.CheckedChanged += new System.EventHandler(this.UpdateCalculatorList);
             // 
-            // checkBox4
+            // cb150
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(210, 3);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(67, 19);
-            this.checkBox4.TabIndex = 3;
-            this.checkBox4.Text = "NM 150";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.cb150.AutoSize = true;
+            this.cb150.Location = new System.Drawing.Point(201, 3);
+            this.cb150.Name = "cb150";
+            this.cb150.Size = new System.Drawing.Size(64, 19);
+            this.cb150.TabIndex = 3;
+            this.cb150.Text = "NM150";
+            this.cb150.UseVisualStyleBackColor = true;
+            this.cb150.CheckedChanged += new System.EventHandler(this.UpdateCalculatorList);
             // 
-            // level5CB
+            // cb200
             // 
-            this.level5CB.AutoSize = true;
-            this.level5CB.Location = new System.Drawing.Point(283, 3);
-            this.level5CB.Name = "level5CB";
-            this.level5CB.Size = new System.Drawing.Size(67, 19);
-            this.level5CB.TabIndex = 4;
-            this.level5CB.Text = "NM 200";
-            this.level5CB.UseVisualStyleBackColor = true;
+            this.cb200.AutoSize = true;
+            this.cb200.Location = new System.Drawing.Point(271, 3);
+            this.cb200.Name = "cb200";
+            this.cb200.Size = new System.Drawing.Size(64, 19);
+            this.cb200.TabIndex = 4;
+            this.cb200.Text = "NM200";
+            this.cb200.UseVisualStyleBackColor = true;
+            this.cb200.CheckedChanged += new System.EventHandler(this.UpdateCalculatorList);
             // 
             // meatFarmPanel
             // 
@@ -462,12 +419,22 @@
             // 
             this.exOtpnRB.AutoSize = true;
             this.exOtpnRB.Dock = System.Windows.Forms.DockStyle.Top;
+            this.exOtpnRB.Enabled = false;
             this.exOtpnRB.Location = new System.Drawing.Point(0, 0);
             this.exOtpnRB.Name = "exOtpnRB";
             this.exOtpnRB.Size = new System.Drawing.Size(91, 19);
             this.exOtpnRB.TabIndex = 0;
             this.exOtpnRB.Text = "EX";
             this.exOtpnRB.UseVisualStyleBackColor = true;
+            // 
+            // calculatorPanel
+            // 
+            this.calculatorPanel.Controls.Add(this.tableLayoutPanel1);
+            this.calculatorPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.calculatorPanel.Location = new System.Drawing.Point(0, 0);
+            this.calculatorPanel.Name = "calculatorPanel";
+            this.calculatorPanel.Size = new System.Drawing.Size(1257, 539);
+            this.calculatorPanel.TabIndex = 3;
             // 
             // GWCalculator
             // 
@@ -479,7 +446,6 @@
             this.Name = "GWCalculator";
             this.Size = new System.Drawing.Size(1257, 539);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.calculatorPanel.ResumeLayout(false);
             this.optionsPanel.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
@@ -493,13 +459,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             this.filterPanel.ResumeLayout(false);
             this.raidChoicePanel.ResumeLayout(false);
-            this.meatPanel.ResumeLayout(false);
-            this.meatPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.meatNum)).EndInit();
             this.levelSelectPanel.ResumeLayout(false);
             this.levelSelectPanel.PerformLayout();
             this.meatFarmPanel.ResumeLayout(false);
             this.meatFarmPanel.PerformLayout();
+            this.calculatorPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -525,15 +489,12 @@
         private NumericUpDown numericUpDown3;
         private Panel filterPanel;
         private Panel raidChoicePanel;
-        private Panel meatPanel;
-        private Label label13;
-        private NumericUpDown meatNum;
         private FlowLayoutPanel levelSelectPanel;
-        private CheckBox checkBox1;
-        private CheckBox checkBox2;
-        private CheckBox checkBox3;
-        private CheckBox checkBox4;
-        private CheckBox level5CB;
+        private CheckBox cb90;
+        private CheckBox cb95;
+        private CheckBox cb100;
+        private CheckBox cb150;
+        private CheckBox cb200;
         private Panel meatFarmPanel;
         private RadioButton exPOtpnRB;
         private RadioButton exOtpnRB;

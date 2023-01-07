@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NeverGuildWar_Buddy.Forms.User_Controls;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -6,17 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace NeverGuildWar_Buddy.Classes
-{
+{   
     internal class CalculatorClass
     {
-        enum raids
-        {
-            NM90,
-            NM95,
-            NM100,
-            NM150,
-            NM200
-        }
+      
 
         int exPHonours = 80800;
         int exHonours = 50000;
@@ -92,7 +86,8 @@ namespace NeverGuildWar_Buddy.Classes
         int maxAP = 999;
         public int meat { get; set; }
         public int farmOption = 1;
-
+        public decimal timeBest;
+        public decimal timeWorst;
 
         public void SetMeatFarm(EX raid)
         {
@@ -241,25 +236,7 @@ namespace NeverGuildWar_Buddy.Classes
                 }
                 if (remainder > 1)
                 {
-                    return list;
-                    decimal runs = Decimal.Divide(targetMeat, ex.meatCost);
-                    decimal honours = MeatFarming(runs, ex);
-                    decimal cost = runs * ex.meatCost;
-                    decimal ap = runs * ex.hostCost.Item1;
-                    cost = Math.Round(cost, 2);
-                    honours = Math.Round(honours);
-                    Debug.WriteLine($"Meat needed = {cost}\n honours gained {honours}");
-                    decimal tokens = runs * ex.token;
-                    tokens = Math.Round(tokens);
-                    decimal pots = PotCost(runs, ex.hostCost.Item1);
-                    pots = Math.Round(pots);
-                    list.Add(ap);
-                    list.Add(runs);
-                    list.Add(honours);
-                    list.Add(cost);
-                    list.Add(tokens);
-                    list.Add(pots);
-                    return list;
+                    return list;               
                 }
             }
             decimal a = 0;
@@ -295,6 +272,7 @@ namespace NeverGuildWar_Buddy.Classes
             int tableHeigt = table.Height;
             int sizeDistrubution = tableHeigt / count;
             float percentageHeight = 33;
+            table.RowStyles.Clear();
             Debug.WriteLine($"Table Height: {tableHeigt}");
             foreach (RowStyle style in styles)
             {
@@ -354,12 +332,11 @@ namespace NeverGuildWar_Buddy.Classes
         public int honours = 910000;
         public int token = 55;
         public Tuple<int, int> hostCost = new Tuple<int, int>(30, 5);
-        int timeBest;
-        int timeWorst;
+  
         public int OptimalRating()
         {
             int rating;
-            int sumTime = timeBest + timeWorst;
+            decimal sumTime = timeBest + timeWorst;
             int honourRate = honours / divNum;
             decimal avgTime = Decimal.Divide(sumTime, 2);
             decimal timeRating = timeScore - avgTime;
@@ -428,8 +405,6 @@ namespace NeverGuildWar_Buddy.Classes
         public int honours = 10250000;
         public int token = 160;
         public Tuple<int, int> hostCost = new Tuple<int, int>(50, 30);
-        decimal timeBest;
-        decimal timeWorst;
 
         bool revive;
         int reviveCount = 0;
@@ -495,6 +470,7 @@ namespace NeverGuildWar_Buddy.Classes
             pots = Math.Round(pots, 1);
             intBattles = Math.Round(intBattles, 1);
             RaidTableRow row = new(name, honours, hostCost.Item2, intBattles, meat, tokens, honour, pots);
+            
             result.Add(row);
             return result;
         }
@@ -523,5 +499,13 @@ namespace NeverGuildWar_Buddy.Classes
             return score;
 
         }
+    }
+    enum raids
+    {
+        NM90,
+        NM95,
+        NM100,
+        NM150,
+        NM200
     }
 }

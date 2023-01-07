@@ -63,6 +63,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1904, 521);
             this.tabControl1.TabIndex = 3;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.LoadFormDetails);
             // 
             // tabPage1
             // 
@@ -123,6 +124,10 @@
             this.timerLabel.TabIndex = 0;
             this.timerLabel.Text = "Countdown";
             // 
+            // countdownTimer
+            // 
+            this.countdownTimer.Tick += new System.EventHandler(this.UpdateTime);
+            // 
             // HomePageComponent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -135,6 +140,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "HomePageComponent";
             this.Text = "HomePageComponent";
+            this.Load += new System.EventHandler(this.InitialiseLayout);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             this.tabControl1.ResumeLayout(false);
