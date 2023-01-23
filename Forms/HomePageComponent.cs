@@ -26,7 +26,14 @@ namespace NeverGuildWar_Buddy.Forms
             startTime = settingsStart;
             InitializeComponent();
             LoadCalculator(); 
-            LoadTimer();    
+            LoadTimer();
+            LoadLog();
+        }
+
+        private void LoadLog()
+        {   
+            GWLog log = new GWLog();    
+            tabPanel2.Controls.Add(log);    
         }
 
         private void LoadFormDetails(object sender, EventArgs e)
@@ -63,25 +70,22 @@ namespace NeverGuildWar_Buddy.Forms
             TimeSpan ts = endTime.Subtract(now);
             TimeSpan ts1 = startTime.Subtract(now);
             //Debug.WriteLine($"{ts.Days} compared to {ts1.Days}");
-            if (ts > ts1)
-            {
-
+           
                 if (startTime < now.AddHours(24))
                 {
-                    Debug.WriteLine($"Time is less than 24 hours");
+                    //Debug.WriteLine($"Time is less than 24 hours");
                     string time = $"{ts1.Hours}:{ts1.Minutes}:{ts1.Seconds} until next GW";
-                    Debug.WriteLine($"Time is  {ts1.Hours}:{ts1.Minutes}:{ts1.Seconds} less than 24 hours");
+                    //Debug.WriteLine($"Time is  {ts1.Hours}:{ts1.Minutes}:{ts1.Seconds} less than 24 hours");
                     timerLabel.Text = time;
                 }
-                else
+                if(startTime > now.AddDays(1))  
                 {
                     string time = $"{ts1.Days} day(s) until next GW";
                     timerLabel.Text = time;
                 }
-                return;
-            }
+            
 
-            if (ts < ts1)
+            if (startTime < now)
             {
                 //Debug.WriteLine("Passed Start time");
                 string word = "ends";         

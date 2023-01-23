@@ -73,18 +73,7 @@ namespace GBF_Never_Buddy.Classes
                 }
             }
 
-            public class GWRaidDetails
-            {
-                public string difficulty;
-                public string time;
-
-                public GWRaidDetails(string difficulty, string time)
-                {
-                    this.difficulty = difficulty;
-                    this.time = time;
-                }
-            }
-
+      
             public class GWBattleDetails
             {
                 public string difficulty;
@@ -93,8 +82,10 @@ namespace GBF_Never_Buddy.Classes
                 public string revive;
                 public string type;
                 public int reviveTimes;
+                public string desc;
+                public TimeSpan timeConv;
 
-                public GWBattleDetails(string difficulty, string time, string element, string revive, int reviveTimes, string type)
+                public GWBattleDetails(string difficulty, string time, string element, string revive, int reviveTimes, string type, string desc)
                 {
                     this.difficulty = difficulty;
                     this.time = time;
@@ -102,12 +93,30 @@ namespace GBF_Never_Buddy.Classes
                     this.revive = revive;
                     this.reviveTimes = reviveTimes;
                     this.type = type;
+                    this.desc = desc;
+                    ConvertedTime();
                 }
 
+                private TimeSpan ConvertedTime()
+                {   
+                    TimeSpan conTime;
+                    conTime = TimeSpan.Parse(this.time);
+                    //var output = $"{(int)time.TotalMinutes}:{time.Seconds:00}";
+                    //conTime = output.ToString();
+                    return conTime;
+
+                }
                 public string Query(int id)
                 {
                     string query = $"INSERT INTO [SetupDetails] ([Id], [Difficulty], [Time], [RaidID], [Element], [Revive]," +
-                        $" [ReviveTimes], [Type]) VALUES ({id}, N'{difficulty}',N'{time}',N'{id}',N'{element}',N'{revive}',N'{reviveTimes}',N'{type}')";
+                        $" [ReviveTimes], [Type]) VALUES ({id},'{difficulty}','{time}','{id}','{element}','{revive}','{reviveTimes}','{type}')";
+                    return query;
+
+                }
+                public string QueryDes(int id)
+                {
+                    string query = $"INSERT INTO [SetupDetails] ([Id], [Difficulty], [Time], [RaidID], [Element], [Revive]," +
+                        $" [ReviveTimes], [Type]) VALUES ({id},'{difficulty}','{time}','{id}','{element}','{revive}','{reviveTimes}','{type}')";
                     return query;
 
                 }
@@ -130,24 +139,7 @@ namespace GBF_Never_Buddy.Classes
                     GWRaidDetails = gWRaidDetails;
                 }
             }
-
-            public class SetupDetails
-            {
-                public int id;
-                public List<string> Party;
-                public List<string> Weapons;
-                public List<string> Summons;
-                public GWRaidDetails GWRaidDetails;
-
-                public SetupDetails(int id, List<string> party, List<string> weapons, List<string> summons, GWRaidDetails gWRaidDetails)
-                {
-                    this.id = id;
-                    Party = party;
-                    Weapons = weapons;
-                    Summons = summons;
-                    GWRaidDetails = gWRaidDetails;
-                }
-            }
+          
 
             public class GWResult
             {

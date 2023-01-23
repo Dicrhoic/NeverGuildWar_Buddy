@@ -67,74 +67,80 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1228, 36);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1417, 36);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // potLabel
             // 
             this.potLabel.AutoSize = true;
             this.potLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.potLabel.Location = new System.Drawing.Point(991, 0);
+            this.potLabel.Location = new System.Drawing.Point(1180, 0);
             this.potLabel.Name = "potLabel";
             this.potLabel.Size = new System.Drawing.Size(46, 30);
             this.potLabel.TabIndex = 7;
             this.potLabel.Tag = "pot";
             this.potLabel.Text = "999";
+            this.potLabel.MouseHover += new System.EventHandler(this.DisplaysDetail);
             // 
             // honourTotalLabel
             // 
             this.honourTotalLabel.AutoSize = true;
             this.honourTotalLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.honourTotalLabel.Location = new System.Drawing.Point(836, 0);
+            this.honourTotalLabel.Location = new System.Drawing.Point(1025, 0);
             this.honourTotalLabel.Name = "honourTotalLabel";
             this.honourTotalLabel.Size = new System.Drawing.Size(138, 30);
             this.honourTotalLabel.TabIndex = 6;
             this.honourTotalLabel.Tag = "honourTotal";
             this.honourTotalLabel.Text = "1,004,120,000";
+            this.honourTotalLabel.MouseHover += new System.EventHandler(this.DisplaysDetail);
             // 
             // tokenLabel
             // 
             this.tokenLabel.AutoSize = true;
             this.tokenLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tokenLabel.Location = new System.Drawing.Point(703, 0);
+            this.tokenLabel.Location = new System.Drawing.Point(892, 0);
             this.tokenLabel.Name = "tokenLabel";
             this.tokenLabel.Size = new System.Drawing.Size(73, 30);
             this.tokenLabel.TabIndex = 5;
             this.tokenLabel.Tag = "token";
             this.tokenLabel.Text = "90,248";
+            this.tokenLabel.MouseHover += new System.EventHandler(this.DisplaysDetail);
             // 
             // meatCostLabel
             // 
             this.meatCostLabel.AutoSize = true;
             this.meatCostLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.meatCostLabel.Location = new System.Drawing.Point(548, 0);
+            this.meatCostLabel.Location = new System.Drawing.Point(737, 0);
             this.meatCostLabel.Name = "meatCostLabel";
             this.meatCostLabel.Size = new System.Drawing.Size(70, 30);
             this.meatCostLabel.TabIndex = 4;
             this.meatCostLabel.Tag = "meatCost";
             this.meatCostLabel.Text = "-2,850";
+            this.meatCostLabel.MouseHover += new System.EventHandler(this.DisplaysDetail);
             // 
             // battleLabel
             // 
             this.battleLabel.AutoSize = true;
             this.battleLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.battleLabel.Location = new System.Drawing.Point(441, 0);
+            this.battleLabel.Location = new System.Drawing.Point(630, 0);
             this.battleLabel.Name = "battleLabel";
             this.battleLabel.Size = new System.Drawing.Size(57, 30);
             this.battleLabel.TabIndex = 3;
             this.battleLabel.Tag = "battles";
             this.battleLabel.Text = "5000";
+            this.battleLabel.MouseHover += new System.EventHandler(this.DisplaysDetail);
             // 
             // honourLabel
             // 
             this.honourLabel.AutoSize = true;
             this.honourLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.honourLabel.Location = new System.Drawing.Point(152, 0);
+            this.honourLabel.Location = new System.Drawing.Point(341, 0);
             this.honourLabel.Name = "honourLabel";
             this.honourLabel.Size = new System.Drawing.Size(101, 30);
             this.honourLabel.TabIndex = 1;
             this.honourLabel.Tag = "honourEarn";
             this.honourLabel.Text = "10200000";
+            this.honourLabel.MouseHover += new System.EventHandler(this.DisplaysDetail);
             // 
             // nameLabel
             // 
@@ -152,23 +158,25 @@
             // 
             this.meatLabel.AutoSize = true;
             this.meatLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.meatLabel.Location = new System.Drawing.Point(276, 0);
+            this.meatLabel.Location = new System.Drawing.Point(465, 0);
             this.meatLabel.Name = "meatLabel";
             this.meatLabel.Size = new System.Drawing.Size(68, 30);
             this.meatLabel.TabIndex = 2;
             this.meatLabel.Tag = "meat";
             this.meatLabel.Text = "-meat";
+            this.meatLabel.MouseHover += new System.EventHandler(this.DisplaysDetail);
             // 
             // hpm
             // 
             this.hpm.AutoSize = true;
             this.hpm.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.hpm.Location = new System.Drawing.Point(1083, 0);
+            this.hpm.Location = new System.Drawing.Point(1272, 0);
             this.hpm.Name = "hpm";
-            this.hpm.Size = new System.Drawing.Size(55, 30);
+            this.hpm.Size = new System.Drawing.Size(51, 30);
             this.hpm.TabIndex = 8;
             this.hpm.Tag = "honrpermin";
-            this.hpm.Text = "hpm";
+            this.hpm.Text = "N/A";
+            this.hpm.MouseHover += new System.EventHandler(this.DisplaysDetail);
             // 
             // RaidTableRow
             // 
@@ -176,7 +184,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "RaidTableRow";
-            this.Size = new System.Drawing.Size(1228, 36);
+            this.Size = new System.Drawing.Size(1417, 36);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

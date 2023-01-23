@@ -81,12 +81,13 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.optionsPanel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.filterPanel, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1257, 539);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1455, 134);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // optionsPanel
@@ -96,7 +97,7 @@
             this.optionsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.optionsPanel.Location = new System.Drawing.Point(3, 3);
             this.optionsPanel.Name = "optionsPanel";
-            this.optionsPanel.Size = new System.Drawing.Size(1251, 74);
+            this.optionsPanel.Size = new System.Drawing.Size(1449, 74);
             this.optionsPanel.TabIndex = 3;
             // 
             // flowLayoutPanel2
@@ -200,7 +201,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1251, 32);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1449, 32);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -308,18 +309,19 @@
             this.filterPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filterPanel.Location = new System.Drawing.Point(3, 83);
             this.filterPanel.Name = "filterPanel";
-            this.filterPanel.Size = new System.Drawing.Size(1251, 453);
+            this.filterPanel.Size = new System.Drawing.Size(1449, 48);
             this.filterPanel.TabIndex = 4;
             // 
             // raidChoicePanel
             // 
             this.raidChoicePanel.Controls.Add(this.levelSelectPanel);
             this.raidChoicePanel.Controls.Add(this.meatFarmPanel);
-            this.raidChoicePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.raidChoicePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.raidChoicePanel.Location = new System.Drawing.Point(0, 0);
             this.raidChoicePanel.Name = "raidChoicePanel";
-            this.raidChoicePanel.Size = new System.Drawing.Size(1251, 50);
+            this.raidChoicePanel.Size = new System.Drawing.Size(1449, 48);
             this.raidChoicePanel.TabIndex = 1;
+            this.raidChoicePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.raidChoicePanel_Paint);
             // 
             // levelSelectPanel
             // 
@@ -331,7 +333,7 @@
             this.levelSelectPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.levelSelectPanel.Location = new System.Drawing.Point(91, 0);
             this.levelSelectPanel.Name = "levelSelectPanel";
-            this.levelSelectPanel.Size = new System.Drawing.Size(668, 50);
+            this.levelSelectPanel.Size = new System.Drawing.Size(668, 48);
             this.levelSelectPanel.TabIndex = 2;
             // 
             // cb90
@@ -399,7 +401,7 @@
             this.meatFarmPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.meatFarmPanel.Location = new System.Drawing.Point(0, 0);
             this.meatFarmPanel.Name = "meatFarmPanel";
-            this.meatFarmPanel.Size = new System.Drawing.Size(91, 50);
+            this.meatFarmPanel.Size = new System.Drawing.Size(91, 48);
             this.meatFarmPanel.TabIndex = 1;
             // 
             // exPOtpnRB
@@ -433,7 +435,7 @@
             this.calculatorPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.calculatorPanel.Location = new System.Drawing.Point(0, 0);
             this.calculatorPanel.Name = "calculatorPanel";
-            this.calculatorPanel.Size = new System.Drawing.Size(1257, 539);
+            this.calculatorPanel.Size = new System.Drawing.Size(1455, 134);
             this.calculatorPanel.TabIndex = 3;
             // 
             // GWCalculator
@@ -444,7 +446,7 @@
             this.AutoSize = true;
             this.Controls.Add(this.calculatorPanel);
             this.Name = "GWCalculator";
-            this.Size = new System.Drawing.Size(1257, 539);
+            this.Size = new System.Drawing.Size(1455, 134);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.optionsPanel.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);

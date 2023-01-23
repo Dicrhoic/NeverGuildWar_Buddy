@@ -344,6 +344,24 @@ namespace NeverGuildWar_Buddy.Classes.SQLite
             return data;
         }
 
+        public List<Summon> AllSummonList()
+        {
+            List<Summon> data = new();
+            string queryString =
+            $"SELECT * FROM dbo.GachaCharacterList;";
+            string test = $"SELECT * FROM SSRSummons;";
+            try
+            {
+                data = DBData(test);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error: {ex.Message}");
+
+            }
+            return data;
+        }
+
 
         public List<Summon> DBData(string queryString)
         {

@@ -424,6 +424,7 @@ namespace NeverGuildWar_Buddy.Classes
             this.timeBest = timeBest;
             this.timeWorst = timeWorst;
             this.target = target;
+            Debug.WriteLine($"Target: {target}");
         }
 
         public void SetRevives(int revies)

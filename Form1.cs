@@ -13,12 +13,13 @@ namespace NeverGuildWar_Buddy
         {
             InitializeComponent();
             formManager= new FormManager(); 
-           
+            
         }
 
         private void HomePage_Load(object sender, EventArgs e)
         {
             formManager.LoadForm(new HomePageComponent(), mainPanel);
+           
         }
 
         private void LoadSetupsForm(object sender, EventArgs e)
@@ -45,6 +46,11 @@ namespace NeverGuildWar_Buddy
             WeaponSQLHelper weaponSQLHelper = new WeaponSQLHelper();
             weaponSQLHelper.ValidateDB();   
             weaponSQLHelper.UpdateDBFromXML();  
+        }
+
+        private void ReturnHome(object sender, EventArgs e)
+        {
+            formManager.LoadForm(new HomePageComponent(), mainPanel);
         }
     }
 }

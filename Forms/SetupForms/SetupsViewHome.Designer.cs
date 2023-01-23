@@ -43,24 +43,27 @@
             // 
             // listView1
             // 
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Left;
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(360, 378);
+            this.listView1.Size = new System.Drawing.Size(430, 378);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.SortListView);
+            this.listView1.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.LoadRaidDetails);
+            this.listView1.Click += new System.EventHandler(this.LoadSetupData);
             // 
             // dataTable
             // 
             this.dataTable.AutoScroll = true;
             this.dataTable.ColumnCount = 1;
-            this.dataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.dataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.dataTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataTable.Location = new System.Drawing.Point(362, 31);
+            this.dataTable.Location = new System.Drawing.Point(431, 31);
             this.dataTable.Name = "dataTable";
             this.dataTable.RowCount = 1;
-            this.dataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.dataTable.Size = new System.Drawing.Size(699, 380);
+            this.dataTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.dataTable.Size = new System.Drawing.Size(630, 380);
             this.dataTable.TabIndex = 4;
             // 
             // filterPanel
@@ -70,7 +73,7 @@
             this.filterPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.filterPanel.Location = new System.Drawing.Point(0, 31);
             this.filterPanel.Name = "filterPanel";
-            this.filterPanel.Size = new System.Drawing.Size(362, 380);
+            this.filterPanel.Size = new System.Drawing.Size(431, 380);
             this.filterPanel.TabIndex = 3;
             // 
             // mainPanel
@@ -110,6 +113,7 @@
             this.createNewSetupToolStripMenuItem.Name = "createNewSetupToolStripMenuItem";
             this.createNewSetupToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
             this.createNewSetupToolStripMenuItem.Text = "Create New Setup";
+            this.createNewSetupToolStripMenuItem.Click += new System.EventHandler(this.CreateForm);
             // 
             // SetupsViewHome
             // 

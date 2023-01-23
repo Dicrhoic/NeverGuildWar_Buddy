@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
+using static GBF_Never_Buddy.Classes.GameDataClasses;
+using static GBF_Never_Buddy.Classes.GameDataClasses.Weapon;
 
 namespace NeverGuildWar_Buddy.Classes.SQLite
 {
-    internal class SQLiteHelper
+    public class SQLiteHelper
     {
         string? exPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         string? dbPath = null;
@@ -121,5 +124,6 @@ namespace NeverGuildWar_Buddy.Classes.SQLite
                 homePage.Enabled = true;
             }
         }
+    
     }
 }

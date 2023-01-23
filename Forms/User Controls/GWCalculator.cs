@@ -1,14 +1,5 @@
 ﻿using NeverGuildWar_Buddy.Classes;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace NeverGuildWar_Buddy.Forms.User_Controls
 {
@@ -76,10 +67,12 @@ namespace NeverGuildWar_Buddy.Forms.User_Controls
         }
         private void CreateRows(List<int> data)
         {
+          
             if(numericUpDown5.Value > 0)
             {                
-                Decimal target = numericUpDown3.Value;
-                if (numericUpDown3.Value > 0)
+                Decimal target = numericUpDown5.Value;
+                Debug.WriteLine(target);
+                if (numericUpDown3.Value != 0)
                 {
                     target = target - numericUpDown3.Value;
                 }
@@ -124,7 +117,7 @@ namespace NeverGuildWar_Buddy.Forms.User_Controls
                     List<RaidTableRow> rows = m200.RequiredNumbers();
                     foreach (RaidTableRow row in rows)
                     {
-                        m200.ResizeTable(tableLayoutPanel1);
+                        //m200.ResizeTable(tableLayoutPanel1);
                         tableLayoutPanel1.Controls.Add(row);
                     }
                     break;
@@ -133,8 +126,15 @@ namespace NeverGuildWar_Buddy.Forms.User_Controls
 
         private void CreateData(object sender, EventArgs e)
         {
-            List<int> rows = ConvertedToInt();       
+            List<int> rows = ConvertedToInt();
             CreateRows(rows);   
         }
+
+        private void raidChoicePanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+         
     }
 }
