@@ -77,8 +77,8 @@ namespace NeverGuildWar_Buddy.Forms
             //Debug.WriteLine($"{ts.Days} compared to {ts1.Days}");
             int endDay = Math.Abs(ts.Days);
             int startDay = Math.Abs(ts1.Days);
-            //Debug.WriteLine($"{startDay} compared to {endDay}");
-            if (startDay > 0 && endDay < 0)
+            Debug.WriteLine($"{startDay} compared to {endDay}");
+            if (startDay > 0 && endDay > 0)
             {
                 string time = $"{ts1.Days} day(s) until next GW";
                 timerLabel.Text = time;
@@ -89,7 +89,7 @@ namespace NeverGuildWar_Buddy.Forms
                 //Debug.WriteLine($"Time is  {ts1.Hours}:{ts1.Minutes}:{ts1.Seconds} less than 24 hours");
                 timerLabel.Text = time;
             }
-            if (startDay == 0 && endDay > 0)
+            if (startDay < 0 && endDay > 0)
             {
                 string layout = $"GW ends in";
                 string time = $"{layout} {ts.Days} day(s)";
