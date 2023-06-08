@@ -51,6 +51,7 @@ namespace NeverGuildWar_Buddy.Forms.SetupForms
             }
             string id = SlotName(mode, pictureBox1);
             LoadDataSource();
+            
         }
 
 
@@ -327,25 +328,31 @@ namespace NeverGuildWar_Buddy.Forms.SetupForms
 
         private void CheckSlot(Character character, int slotID)
         {   
-            helper.currentChar= character;  
-            if (partySetup.Count > 0)
+            helper.currentChar = character;  
+            if (helper.partySetup.Count > 0)
             {
                 foreach (var tuple in partySetup.ToList())
                 {
                     int slot = tuple.Item1;
                     string name = character.name;
                     if (slot == slotID)
-                    {
+                    {   
+                        Debug.WriteLine($"Removing slot id {slot} matches with {slotID}");
                         partySetup.Remove(tuple);
                     }
 
                 }
             }
-            helper.currentParty = partySetup.Select(tuple => tuple.Item2).ToList(); 
-          
             Tuple<int, Character> tuple1 = new Tuple<int, Character>(slotID, character);
-            partySetup.Add(tuple1);
-            Debug.WriteLine($"Added character into partysetup {partySetup.Count}");
+            helper.partySetup.Add(tuple1);
+            foreach(var tuple2 in helper.partySetup.ToList())
+            {
+                Debug.WriteLine(tuple2.Item2.name);
+            }
+            Debug.WriteLine($"Size {helper.partySetup.Count}");
+            List<Character> characterList = helper.partySetup.Select(tuple => tuple.Item2).ToList();
+            helper.currentParty = characterList;
+          
         }
 
         private void CheckSlot(Summon summon, int slotID)

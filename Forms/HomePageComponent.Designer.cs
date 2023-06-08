@@ -28,128 +28,138 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.mainPanel = new System.Windows.Forms.Panel();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPanel2 = new System.Windows.Forms.Panel();
-            this.timerLabel = new System.Windows.Forms.Label();
-            this.countdownTimer = new System.Windows.Forms.Timer(this.components);
-            this.mainPanel.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            mainPanel = new Panel();
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
+            panel1 = new Panel();
+            tabPage2 = new TabPage();
+            tabPanel2 = new Panel();
+            tabPage3 = new TabPage();
+            timerLabel = new Label();
+            countdownTimer = new System.Windows.Forms.Timer(components);
+            mainPanel.SuspendLayout();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            SuspendLayout();
             // 
             // mainPanel
             // 
-            this.mainPanel.Controls.Add(this.tabControl1);
-            this.mainPanel.Controls.Add(this.timerLabel);
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(0, 0);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(1904, 598);
-            this.mainPanel.TabIndex = 1;
+            mainPanel.Controls.Add(tabControl1);
+            mainPanel.Controls.Add(timerLabel);
+            mainPanel.Dock = DockStyle.Fill;
+            mainPanel.Location = new Point(0, 0);
+            mainPanel.Name = "mainPanel";
+            mainPanel.Size = new Size(1904, 598);
+            mainPanel.TabIndex = 1;
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tabControl1.Location = new System.Drawing.Point(0, 30);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1904, 521);
-            this.tabControl1.TabIndex = 3;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.LoadFormDetails);
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPage3);
+            tabControl1.Dock = DockStyle.Fill;
+            tabControl1.Location = new Point(0, 30);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(1904, 568);
+            tabControl1.TabIndex = 3;
+            tabControl1.SelectedIndexChanged += LoadFormDetails;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.panel1);
-            this.tabPage1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1896, 493);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Honour/Box Calculator";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            tabPage1.Controls.Add(panel1);
+            tabPage1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(1896, 540);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Honour/Box Calculator";
+            tabPage1.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
-            this.panel1.AutoScroll = true;
-            this.panel1.AutoSize = true;
-            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1890, 487);
-            this.panel1.TabIndex = 2;
+            panel1.AutoScroll = true;
+            panel1.AutoSize = true;
+            panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(3, 3);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1890, 534);
+            panel1.TabIndex = 2;
+            panel1.SizeChanged += UpdateChildren;
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.tabPanel2);
-            this.tabPage2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1896, 493);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "GW Results";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            tabPage2.Controls.Add(tabPanel2);
+            tabPage2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(1896, 540);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "GW Results";
+            tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPanel2
             // 
-            this.tabPanel2.AutoScroll = true;
-            this.tabPanel2.AutoSize = true;
-            this.tabPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tabPanel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.tabPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabPanel2.Location = new System.Drawing.Point(3, 3);
-            this.tabPanel2.Name = "tabPanel2";
-            this.tabPanel2.Size = new System.Drawing.Size(1890, 487);
-            this.tabPanel2.TabIndex = 0;
+            tabPanel2.AutoScroll = true;
+            tabPanel2.AutoSize = true;
+            tabPanel2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            tabPanel2.BorderStyle = BorderStyle.Fixed3D;
+            tabPanel2.Dock = DockStyle.Fill;
+            tabPanel2.Location = new Point(3, 3);
+            tabPanel2.Name = "tabPanel2";
+            tabPanel2.Size = new Size(1890, 534);
+            tabPanel2.TabIndex = 0;
+            // 
+            // tabPage3
+            // 
+            tabPage3.Location = new Point(4, 24);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Size = new Size(1896, 540);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "GW Rank Cutoff";
+            tabPage3.UseVisualStyleBackColor = true;
             // 
             // timerLabel
             // 
-            this.timerLabel.AutoSize = true;
-            this.timerLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.timerLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.timerLabel.Location = new System.Drawing.Point(0, 0);
-            this.timerLabel.Name = "timerLabel";
-            this.timerLabel.Size = new System.Drawing.Size(120, 30);
-            this.timerLabel.TabIndex = 0;
-            this.timerLabel.Text = "Countdown";
+            timerLabel.AutoSize = true;
+            timerLabel.Dock = DockStyle.Top;
+            timerLabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            timerLabel.Location = new Point(0, 0);
+            timerLabel.Name = "timerLabel";
+            timerLabel.Size = new Size(120, 30);
+            timerLabel.TabIndex = 0;
+            timerLabel.Text = "Countdown";
             // 
             // countdownTimer
             // 
-            this.countdownTimer.Tick += new System.EventHandler(this.UpdateTime);
+            countdownTimer.Tick += UpdateTime;
             // 
             // HomePageComponent
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
-            this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1904, 598);
-            this.ControlBox = false;
-            this.Controls.Add(this.mainPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "HomePageComponent";
-            this.Text = "HomePageComponent";
-            this.Load += new System.EventHandler(this.InitialiseLayout);
-            this.mainPanel.ResumeLayout(false);
-            this.mainPanel.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
+            AutoSize = true;
+            ClientSize = new Size(1904, 598);
+            ControlBox = false;
+            Controls.Add(mainPanel);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "HomePageComponent";
+            Text = "HomePageComponent";
+            Load += InitialiseLayout;
+            mainPanel.ResumeLayout(false);
+            mainPanel.PerformLayout();
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
@@ -162,5 +172,6 @@
         private Panel tabPanel2;
         private Label timerLabel;
         private System.Windows.Forms.Timer countdownTimer;
+        private TabPage tabPage3;
     }
 }

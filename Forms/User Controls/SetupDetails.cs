@@ -169,6 +169,7 @@ namespace NeverGuildWar_Buddy.Forms.User_Controls
             Debug.WriteLine(mainHandPB.Name);
             string wepLink = wep.link.ToString();
             mainHandPB.MouseClick += (s, e) => { ImageClickFunction(mainHandPB, wepLink); };
+            
             mainHandPB.Load(wep.imageLink);
         }
 

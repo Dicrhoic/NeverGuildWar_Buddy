@@ -27,12 +27,12 @@ namespace NeverGuildWar_Buddy.Forms.SetupForms
         }
 
         private void LoadItemSelector(object sender, EventArgs e)
-        {   
-            string title =  $"Add ";
+        {
+            string title = $"Add ";
             PictureBox picture = (PictureBox)sender;
             Debug.WriteLine(picture.Tag);
-            if((string)picture.Tag == "char")
-            {   
+            if ((string)picture.Tag == "char")
+            {
                 SelectorForm selector = new(0, picture, setupsHelper);
                 selector.Text = title + (string)picture.Tag;
                 selector.ShowDialog();
@@ -55,7 +55,7 @@ namespace NeverGuildWar_Buddy.Forms.SetupForms
         private void LoadJobSelector(object sender, EventArgs e)
         {
             ClassSelector selector = new(setupsHelper, sender);
-            selector.ShowDialog();  
+            selector.ShowDialog();
         }
 
         private void AddPartyToDB(object sender, EventArgs e)
@@ -67,7 +67,7 @@ namespace NeverGuildWar_Buddy.Forms.SetupForms
             string type = typeCB.Text;
             string revive = "N";
             string desc = descriptionTB.Text;
-            if(descriptionTB.Text.Length < 1)
+            if (descriptionTB.Text.Length < 1)
             {
                 desc = "NA";
             }

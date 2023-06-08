@@ -470,6 +470,12 @@ namespace NeverGuildWar_Buddy.Classes.SQLite
             }
 
         }
+        
+        public void AddSummonData(Summon summon, int id)
+        {
+            string query = UpdateTableQueryString(summon, id);
+            RunSQLQuery(query); 
+        }
     }
     
 }

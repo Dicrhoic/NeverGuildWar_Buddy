@@ -16,8 +16,8 @@ namespace NeverGuildWar_Buddy.Forms
     public partial class HomePageComponent : Form
     {
         FormManager formManager = new FormManager();
-        DateTime endTime = new DateTime(2022, 11, 14, 02, 00, 00);
-        DateTime startTime = new DateTime(2022, 11, 6, 21, 00, 00);
+        DateTime endTime = new DateTime(2023, 4, 28, 02, 00, 00);
+        DateTime startTime = new DateTime(2023, 4, 21, 21, 00, 00);
         public HomePageComponent()
         {
             DateTime settingsEnd = Properties.Settings.Default.EndDate;
@@ -25,15 +25,19 @@ namespace NeverGuildWar_Buddy.Forms
             endTime = settingsEnd;
             startTime = settingsStart;
             InitializeComponent();
-            LoadCalculator(); 
+            LoadCalculator();
             LoadTimer();
             LoadLog();
         }
 
         private void LoadLog()
-        {   
-            GWLog log = new GWLog();    
-            tabPanel2.Controls.Add(log);    
+        {
+            GWLog log = new GWLog();
+            log.Dock = DockStyle.Fill;
+            Debug.WriteLine(log.Height);
+            log.Height = tabPanel2.Height;
+            Debug.WriteLine(tabPanel2.Height);
+            tabPanel2.Controls.Add(log);
         }
 
         private void LoadFormDetails(object sender, EventArgs e)
@@ -43,7 +47,7 @@ namespace NeverGuildWar_Buddy.Forms
 
         private void InitialiseLayout(object sender, EventArgs e)
         {
-     
+
         }
 
         void LoadCalculator()
@@ -67,47 +71,52 @@ namespace NeverGuildWar_Buddy.Forms
         {
             //Debug.WriteLine("Ticking");
             DateTime now = DateTime.Now;
+            //Debug.WriteLine($"{startTime}-{now}\n{endTime}-{now}");
             TimeSpan ts = endTime.Subtract(now);
-            TimeSpan ts1 = startTime.Subtract(now);
+            TimeSpan ts1 = startTime - (now);
             //Debug.WriteLine($"{ts.Days} compared to {ts1.Days}");
-           
-                if (startTime < now.AddHours(24))
-                {
-                    //Debug.WriteLine($"Time is less than 24 hours");
-                    string time = $"{ts1.Hours}:{ts1.Minutes}:{ts1.Seconds} until next GW";
-                    //Debug.WriteLine($"Time is  {ts1.Hours}:{ts1.Minutes}:{ts1.Seconds} less than 24 hours");
-                    timerLabel.Text = time;
-                }
-                if(startTime > now.AddDays(1))  
-                {
-                    string time = $"{ts1.Days} day(s) until next GW";
-                    timerLabel.Text = time;
-                }
-            
-
-            if (startTime < now)
+            int endDay = Math.Abs(ts.Days);
+            int startDay = Math.Abs(ts1.Days);
+            //Debug.WriteLine($"{startDay} compared to {endDay}");
+            if (startDay > 0 && endDay < 0)
             {
-                //Debug.WriteLine("Passed Start time");
-                string word = "ends";         
-                string layout = $"GW {word} in";
-
-                if (endTime < now.AddHours(24))
-                {
-                    //Debug.WriteLine($"Time is less than 24 hours");
-                    string time = $"{layout} {ts.Hours}:{ts.Minutes}:{ts.Seconds}";
-                    timerLabel.Text = time;
-                }
-                else
-                {
-                    string time = $"{layout} {ts.Days} days {ts.Hours}(hrs):{ts.Minutes}(mins)";
-                    timerLabel.Text = time;
-                }
+                string time = $"{ts1.Days} day(s) until next GW";
+                timerLabel.Text = time;
             }
+            if (startDay == 1)
+            {
+                string time = $"{ts1.Hours}:{ts1.Minutes}:{ts1.Seconds} until next GW";
+                //Debug.WriteLine($"Time is  {ts1.Hours}:{ts1.Minutes}:{ts1.Seconds} less than 24 hours");
+                timerLabel.Text = time;
+            }
+            if (startDay == 0 && endDay > 0)
+            {
+                string layout = $"GW ends in";
+                string time = $"{layout} {ts.Days} day(s)";
+                timerLabel.Text = time;
+            }
+            if (startDay == 0 && endDay < 0)
+            {
+                string layout = $"GW ends in";
+                string time = $"{layout} {ts.Hours}:{ts.Minutes}:{ts.Seconds}";
+                timerLabel.Text = time;
+            }
+
 
 
 
 
         }
 
+        private void UpdateChildren(object sender, EventArgs e)
+        {
+            //Debug.WriteLine("Size Changed");
+            foreach (Control c in panel1.Controls)
+            {
+                c.Height = panel1.Height;
+                c.Width = panel1.Width;
+                //.WriteLine(c.Height);
+            }
+        }
     }
 }

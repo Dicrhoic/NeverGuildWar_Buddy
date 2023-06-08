@@ -205,14 +205,12 @@ namespace NeverGuildWar_Buddy.Classes.SQlite
                         GetConnectionString()))
                 {
 
-                    Debug.WriteLine(connection.Database);
-                    Debug.WriteLine(queryString);
                     SqliteCommand command = new SqliteCommand(
                     queryString, connection);
                     Debug.WriteLine("Command runnning");
                     try
                     {
-                        Debug.WriteLine("Connection");
+
                         try
                         {
                             connection.Open();
@@ -221,7 +219,6 @@ namespace NeverGuildWar_Buddy.Classes.SQlite
                         {
                             Debug.WriteLine(ex.Message);
                         }
-                        Debug.WriteLine("Reader");
                         SqliteDataReader reader;
                         reader = command.ExecuteReader();
                         string output = "";
@@ -235,7 +232,6 @@ namespace NeverGuildWar_Buddy.Classes.SQlite
                         Debug.WriteLine(ex.Message);
                     }
                     
-                    //Debug.WriteLine(output);
                     connection.Close();
                     return count;
                 }
@@ -255,14 +251,10 @@ namespace NeverGuildWar_Buddy.Classes.SQlite
             using (SqliteConnection connection = new SqliteConnection(
                GetConnectionString()))
             {
-                Debug.WriteLine("Getting Data Tst");
 
-                Debug.WriteLine(connection.Database);
-                Debug.WriteLine(queryString);
                 SqliteCommand command = new SqliteCommand(
                 queryString, connection);
                 connection.Open();
-                Debug.WriteLine("A1");
                 SqliteDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
@@ -270,10 +262,8 @@ namespace NeverGuildWar_Buddy.Classes.SQlite
 
                     AddCharacterToList((IDataRecord)reader, characters);
                 }
-                Debug.WriteLine("A2");
                 reader.Close();
                 connection.Close();
-                Debug.WriteLine(characters.Count);
                 return characters;
 
 
@@ -420,6 +410,52 @@ namespace NeverGuildWar_Buddy.Classes.SQlite
                 Character character = new(name, element, series, image, link);
                 characters.Add(character);
                 //Debug.WriteLine($"Data is {name}, {element}, {link}");
+            }
+
+        }
+
+        private string InsertQuery()
+        {
+            string query = $"INSERT INTO [GachaCharacters] ([Id], [Name], [Element], [Series], [Image], [Link]) " +
+                $"VALUES (@id, @name, @element, @series, @image, @link)";
+            return query;
+        }
+
+        public void AddCharacterData(GameDataClasses.Character character, int id)
+        {
+            MBHelper mB = new MBHelper();
+            string query = InsertQuery();
+            try
+            {
+                using (SqliteConnection connection = new SqliteConnection(
+                        GetConnectionString()))
+                {
+
+                    Debug.WriteLine(connection.Database);
+                    Debug.WriteLine(query);
+                    SqliteCommand command = new SqliteCommand(
+                    query, connection);
+                    command.Parameters.AddWithValue("@id", id);
+                    command.Parameters.AddWithValue("@name", character.name);
+                    command.Parameters.AddWithValue("@element", character.element);
+                    command.Parameters.AddWithValue("@series", character.series);
+                    command.Parameters.AddWithValue("@link", character.link);
+                    command.Parameters.AddWithValue("@image", character.image);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                    string message = $"Succesfully added {character.name}\n{character.series}\n" +
+                        $"{character.element} to database.";
+                    string caption = $"Added to database";
+                    mB.SuccessMB(message, caption);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error: {ex.Message}");
+                string caption = $"Error Adding to DB";
+                mB.ErrorMB(ex.Message, caption);
             }
 
         }

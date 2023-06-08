@@ -40,14 +40,9 @@ namespace NeverGuildWar_Buddy.Classes.SQLite
             using (SqliteConnection connection = new SqliteConnection(
                GetConnectionString()))
             {
-                Debug.WriteLine("Getting Data Test");
-
-                Debug.WriteLine(connection.Database);
-                Debug.WriteLine(queryString);
                 SqliteCommand command = new SqliteCommand(
                 queryString, connection);
                 connection.Open();
-                Debug.WriteLine("A1");
                 SqliteDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
@@ -55,10 +50,8 @@ namespace NeverGuildWar_Buddy.Classes.SQLite
                     AddDataToList((IDataRecord)reader, dataList);
 
                 }
-                Debug.WriteLine("A2");
                 reader.Close();
                 connection.Close();
-                Debug.WriteLine(dataList.Count);
                 return dataList;
 
 
@@ -92,8 +85,6 @@ namespace NeverGuildWar_Buddy.Classes.SQLite
                         GetConnectionString()))
                 {
 
-                    Debug.WriteLine(connection.Database);
-                    Debug.WriteLine(queryString);
                     SqliteCommand command = new SqliteCommand(
                     queryString, connection);
                     connection.Open();
@@ -105,7 +96,6 @@ namespace NeverGuildWar_Buddy.Classes.SQLite
                         Debug.WriteLine($"Ran {index} times");
                         index++;
                     }
-                    Debug.WriteLine(list.Count());
                     connection.Close();
                     return list;
                 }
@@ -191,8 +181,6 @@ namespace NeverGuildWar_Buddy.Classes.SQLite
                         GetConnectionString()))
                 {
 
-                    Debug.WriteLine(connection.Database);
-                    Debug.WriteLine(queryString);
                     SqliteCommand command = new SqliteCommand(
                     queryString, connection);
                     connection.Open();
@@ -203,7 +191,6 @@ namespace NeverGuildWar_Buddy.Classes.SQLite
                         job = SingleDataRecord((IDataRecord)reader);
                     }
                     connection.Close();
-                    //Debug.WriteLine(data);
                     return job;
                 }
             }
@@ -226,8 +213,6 @@ namespace NeverGuildWar_Buddy.Classes.SQLite
                         GetConnectionString()))
                 {
 
-                    Debug.WriteLine(connection.Database);
-                    Debug.WriteLine(queryString);
                     SqliteCommand command = new SqliteCommand(
                     queryString, connection);
                     connection.Open();
@@ -237,9 +222,7 @@ namespace NeverGuildWar_Buddy.Classes.SQLite
                     {
                         AddClassDataToList((IDataRecord)reader, data);
                     }
-                    Debug.WriteLine(data.Count());
                     connection.Close();
-                    Debug.WriteLine(data.Count);
                     return data;
                 }
             }
@@ -317,8 +300,6 @@ namespace NeverGuildWar_Buddy.Classes.SQLite
                         GetConnectionString()))
                 {
 
-                    Debug.WriteLine(connection.Database);
-                    Debug.WriteLine(queryString);
                     SqliteCommand command = new SqliteCommand(
                     queryString, connection);
                     connection.Open();
@@ -329,7 +310,6 @@ namespace NeverGuildWar_Buddy.Classes.SQLite
                     {
                         count++;
                     }
-                    Debug.WriteLine(output);
                     connection.Close();
                     return count;
                 }

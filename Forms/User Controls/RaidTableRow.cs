@@ -24,7 +24,9 @@ namespace NeverGuildWar_Buddy.Forms.User_Controls
             tokenLabel.Text = $"{token}";
             potLabel.Text = $"{pot}";
             honourTotalLabel.Text = $"{totalHonour}";
+
         }
+
 
         public void UpdateHonourPerMin(decimal str)
         {

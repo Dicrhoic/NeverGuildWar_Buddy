@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace NeverGuildWar_Buddy.Classes
 {   
@@ -76,6 +77,28 @@ namespace NeverGuildWar_Buddy.Classes
             return totalHonours;
         }
     }
+
+    public class RaidInfo
+    {
+        public string name { get; }
+        public int cost { get; set; }
+        public int revive { get; set; }
+
+        public int honours { get; set; }
+
+        public string time { get; set; }
+
+        public int score { get; set; }  
+
+        public decimal avgTime { get; set; }    
+
+        public RaidInfo(string name, string time)
+        {
+            this.name = name;
+            this.time = time;
+         
+        }
+    }  
 
     internal class GWRaids
     {
@@ -281,7 +304,6 @@ namespace NeverGuildWar_Buddy.Classes
                 Debug.WriteLine($"Type: {style.SizeType}, Height: {style.Height}");
             }
         }
-
     }
 
     class EX : GWRaids
@@ -307,24 +329,80 @@ namespace NeverGuildWar_Buddy.Classes
         public int honours = 260000;
         public int token = 45;
         public Tuple<int, int> hostCost = new Tuple<int, int>(30, 5);
-        int timeBest;
-        int timeWorst;
-        public int OptimalRating()
-        {
-            int rating;
-            int sumTime = timeBest + timeWorst;
-            int honourRate = honours / divNum;
-            decimal avgTime = Decimal.Divide(sumTime, 2);
-            decimal timeRating = timeScore - avgTime;
-            decimal rewardRatio = hostCost.Item2 + honourRate;
-            decimal score = timeRating + rewardRatio;
-            rating = (int)(score);
-            Debug.WriteLine($"Time score = {timeScore} AT:{avgTime}\n" +
-                $"Reward Ration = Meat:{hostCost.Item2} + Honour Rate{honourRate}\n" +
-                $"Score = {timeRating} - {rewardRatio}");
-            return rating;
 
+        string name = "NM 90";
+        bool revive;
+        int reviveCount = 0;
+        decimal target;
+
+        public decimal hpm { get; set; }
+
+        public NM90(bool revive, decimal timeBest, decimal timeWorst, decimal target)
+        {
+            if (revive)
+            {
+                this.revive = true;
+            }
+            else
+            {
+                this.revive = false;
+            }
+            this.timeBest = timeBest;
+            this.timeWorst = timeWorst;
+            this.target = target;
+            Debug.WriteLine($"Target: {target}");
         }
+
+
+        public List<RaidTableRow> RequiredNumbers()
+        {
+            List<RaidTableRow> result = new List<RaidTableRow>();
+            decimal intBattles = Decimal.Divide(target, honours);
+            decimal meat = MeatCost(intBattles, hostCost.Item2);
+            List<decimal> list = new();
+            int meatHeld = this.meat;
+            meat = (decimal)meat - meatHeld;
+            if (farmOption == 1)
+            {
+                EXPlus exP = new();
+                list = MeatPostCalc(meat, exP);
+                if (list.Count > 0)
+                {
+                    RaidTableRow exPRow = new(exP.name, exP.honours, exP.hostCost.Item2, list[1],
+          list[3], list[4], list[2], list[5]);
+                    result.Add(exPRow);
+                    target = target - list[2];
+                }
+
+            }
+            else
+            {
+                EX ex = new();
+                MeatPostCalc(meat, ex);
+            }
+
+            intBattles = Decimal.Divide(target, honours);
+            meat = MeatCost(intBattles, hostCost.Item2);
+
+            decimal tokens = TokenYield(intBattles, token);
+            decimal honour = HonourYield(intBattles, honours);
+            decimal pots = PotCost(intBattles, hostCost.Item1);
+            tokens = Math.Round(tokens, 1);
+            honour = Math.Round(honour);
+            meat = Math.Round(meat);
+            pots = Math.Round(pots, 1);
+            intBattles = Math.Round(intBattles, 1);
+            RaidTableRow row = new(name, honours, hostCost.Item2, intBattles, meat, tokens, honour, pots);
+            if(hpm > 0)
+            {
+                row.UpdateHonourPerMin(hpm);
+            }
+            result.Add(row);
+            return result;
+        }
+
+
+
     }
 
     class NM95 : GWRaids
@@ -332,72 +410,241 @@ namespace NeverGuildWar_Buddy.Classes
         public int honours = 910000;
         public int token = 55;
         public Tuple<int, int> hostCost = new Tuple<int, int>(30, 5);
-  
-        public int OptimalRating()
-        {
-            int rating;
-            decimal sumTime = timeBest + timeWorst;
-            int honourRate = honours / divNum;
-            decimal avgTime = Decimal.Divide(sumTime, 2);
-            decimal timeRating = timeScore - avgTime;
-            decimal rewardRatio = hostCost.Item2 + honourRate;
-            decimal score = timeRating + rewardRatio;
-            rating = (int)(score);
-            Debug.WriteLine($"Time score = {timeScore} AT:{avgTime}\n" +
-                $"Reward Ration = Meat:{hostCost.Item2} + Honour Rate{honourRate}\n" +
-                $"Score = {timeRating} - {rewardRatio}");
-            return rating;
 
+        string name = "NM 95";
+        bool revive;
+        int reviveCount = 0;
+        decimal target;
+
+        public decimal hpm { get; set; }
+
+        public NM95(bool revive, decimal timeBest, decimal timeWorst, decimal target)
+        {
+            if (revive)
+            {
+                this.revive = true;
+            }
+            else
+            {
+                this.revive = false;
+            }
+            this.timeBest = timeBest;
+            this.timeWorst = timeWorst;
+            this.target = target;
+            Debug.WriteLine($"Target: {target}");
         }
+
+
+        public List<RaidTableRow> RequiredNumbers()
+        {
+            List<RaidTableRow> result = new List<RaidTableRow>();
+            decimal intBattles = Decimal.Divide(target, honours);
+            decimal meat = MeatCost(intBattles, hostCost.Item2);
+            List<decimal> list = new();
+            int meatHeld = this.meat;
+            meat = (decimal)meat - meatHeld;
+            if (farmOption == 1)
+            {
+                EXPlus exP = new();
+                list = MeatPostCalc(meat, exP);
+                if (list.Count > 0)
+                {
+                    RaidTableRow exPRow = new(exP.name, exP.honours, exP.hostCost.Item2, list[1],
+          list[3], list[4], list[2], list[5]);
+                    result.Add(exPRow);
+                    target = target - list[2];
+                }
+
+            }
+            else
+            {
+                EX ex = new();
+                MeatPostCalc(meat, ex);
+            }
+
+            intBattles = Decimal.Divide(target, honours);
+            meat = MeatCost(intBattles, hostCost.Item2);
+
+            decimal tokens = TokenYield(intBattles, token);
+            decimal honour = HonourYield(intBattles, honours);
+            decimal pots = PotCost(intBattles, hostCost.Item1);
+            tokens = Math.Round(tokens, 1);
+            honour = Math.Round(honour);
+            meat = Math.Round(meat);
+            pots = Math.Round(pots, 1);
+            intBattles = Math.Round(intBattles, 1);
+            RaidTableRow row = new(name, honours, hostCost.Item2, intBattles, meat, tokens, honour, pots);
+            if (hpm > 0)
+            {
+                row.UpdateHonourPerMin(hpm);
+            }
+            result.Add(row);
+            return result;
+        }
+
+
+
+
     }
     class NM100 : GWRaids
     {
         public int honours = 2650000;
         public int token = 80;
         public Tuple<int, int> hostCost = new Tuple<int, int>(50, 10);
-        int timeBest;
-        int timeWorst;
-        public int OptimalRating()
-        {
-            int rating;
-            int sumTime = timeBest + timeWorst;
-            int honourRate = honours / divNum;
-            decimal avgTime = Decimal.Divide(sumTime, 2);
-            decimal timeRating = timeScore - avgTime;
-            decimal rewardRatio = hostCost.Item2 + honourRate;
-            decimal score = timeRating + rewardRatio;
-            rating = (int)(score);
-            Debug.WriteLine($"Time score = {timeScore} AT:{avgTime}\n" +
-                $"Reward Ration = Meat:{hostCost.Item2} + Honour Rate{honourRate}\n" +
-                $"Score = {timeRating} - {rewardRatio}");
-            return rating;
+        string name = "NM 100";
 
+        bool revive;
+        int reviveCount = 0;
+        decimal target;
+
+        public decimal hpm { get; set; }
+
+        public NM100(bool revive, decimal timeBest, decimal timeWorst, decimal target)
+        {
+            if (revive)
+            {
+                this.revive = true;
+            }
+            else
+            {
+                this.revive = false;
+            }
+            this.timeBest = timeBest;
+            this.timeWorst = timeWorst;
+            this.target = target;
+            Debug.WriteLine($"Target: {target}");
         }
+
+
+        public List<RaidTableRow> RequiredNumbers()
+        {
+            List<RaidTableRow> result = new List<RaidTableRow>();
+            decimal intBattles = Decimal.Divide(target, honours);
+            decimal meat = MeatCost(intBattles, hostCost.Item2);
+            List<decimal> list = new();
+            int meatHeld = this.meat;
+            meat = (decimal)meat - meatHeld;
+            if (farmOption == 1)
+            {
+                EXPlus exP = new();
+                list = MeatPostCalc(meat, exP);
+                if (list.Count > 0)
+                {
+                    RaidTableRow exPRow = new(exP.name, exP.honours, exP.hostCost.Item2, list[1],
+          list[3], list[4], list[2], list[5]);
+                    result.Add(exPRow);
+                    target = target - list[2];
+                }
+
+            }
+            else
+            {
+                EX ex = new();
+                MeatPostCalc(meat, ex);
+            }
+
+            intBattles = Decimal.Divide(target, honours);
+            meat = MeatCost(intBattles, hostCost.Item2);
+
+            decimal tokens = TokenYield(intBattles, token);
+            decimal honour = HonourYield(intBattles, honours);
+            decimal pots = PotCost(intBattles, hostCost.Item1);
+            tokens = Math.Round(tokens, 1);
+            honour = Math.Round(honour);
+            meat = Math.Round(meat);
+            pots = Math.Round(pots, 1);
+            intBattles = Math.Round(intBattles, 1);
+            RaidTableRow row = new(name, honours, hostCost.Item2, intBattles, meat, tokens, honour, pots);
+            if (hpm > 0)
+            {
+                row.UpdateHonourPerMin(hpm);
+            }
+            result.Add(row);
+            return result;
+        }
+
+
+
     }
     class NM150 : GWRaids
     {
+        string name = "NM 150";
         public int honours = 4100000;
         public int token = 100;
         public Tuple<int, int> hostCost = new Tuple<int, int>(50, 20);
-        int timeBest;
-        int timeWorst;
+       
+        bool revive;
+        int reviveCount = 0;
+        decimal target;
 
-        public int OptimalRating()
+        public decimal hpm { get; set; }
+
+        public NM150(bool revive, decimal timeBest, decimal timeWorst, decimal target)
         {
-            int rating;
-            int sumTime = timeBest + timeWorst;
-            int honourRate = honours / divNum;
-            decimal avgTime = Decimal.Divide(sumTime, 2);
-            decimal timeRating = timeScore - avgTime;
-            decimal rewardRatio = hostCost.Item2 + honourRate;
-            decimal score = timeRating + rewardRatio;
-            rating = (int)(score);
-            Debug.WriteLine($"Time score = {timeScore} AT:{avgTime}\n" +
-                $"Reward Ration = Meat:{hostCost.Item2} + Honour Rate{honourRate}\n" +
-                $"Score = {timeRating} - {rewardRatio}");
-            return rating;
-
+            if (revive)
+            {
+                this.revive = true;
+            }
+            else
+            {
+                this.revive = false;
+            }
+            this.timeBest = timeBest;
+            this.timeWorst = timeWorst;
+            this.target = target;
+            Debug.WriteLine($"Target: {target}");
         }
+
+
+        public List<RaidTableRow> RequiredNumbers()
+        {
+            List<RaidTableRow> result = new List<RaidTableRow>();
+            decimal intBattles = Decimal.Divide(target, honours);
+            decimal meat = MeatCost(intBattles, hostCost.Item2);
+            List<decimal> list = new();
+            int meatHeld = this.meat;
+            meat = (decimal)meat - meatHeld;
+            if (farmOption == 1)
+            {
+                EXPlus exP = new();
+                list = MeatPostCalc(meat, exP);
+                if (list.Count > 0)
+                {
+                    RaidTableRow exPRow = new(exP.name, exP.honours, exP.hostCost.Item2, list[1],
+          list[3], list[4], list[2], list[5]);
+                    result.Add(exPRow);
+                    target = target - list[2];
+                }
+
+            }
+            else
+            {
+                EX ex = new();
+                MeatPostCalc(meat, ex);
+            }
+
+            intBattles = Decimal.Divide(target, honours);
+            meat = MeatCost(intBattles, hostCost.Item2);
+
+            decimal tokens = TokenYield(intBattles, token);
+            decimal honour = HonourYield(intBattles, honours);
+            decimal pots = PotCost(intBattles, hostCost.Item1);
+            tokens = Math.Round(tokens, 1);
+            honour = Math.Round(honour);
+            meat = Math.Round(meat);
+            pots = Math.Round(pots, 1);
+            intBattles = Math.Round(intBattles, 1);
+            RaidTableRow row = new(name, honours, hostCost.Item2, intBattles, meat, tokens, honour, pots);
+            if (hpm > 0)
+            {
+                row.UpdateHonourPerMin(hpm);
+            }
+            result.Add(row);
+            return result;
+        }
+
+
+
     }
     class NM200 : GWRaids
     {
@@ -410,6 +657,7 @@ namespace NeverGuildWar_Buddy.Classes
         int reviveCount = 0;
         decimal target;
 
+        public decimal hpm { get; set; }
 
         public NM200(bool revive, decimal timeBest, decimal timeWorst, decimal target)
         {
@@ -471,7 +719,10 @@ namespace NeverGuildWar_Buddy.Classes
             pots = Math.Round(pots, 1);
             intBattles = Math.Round(intBattles, 1);
             RaidTableRow row = new(name, honours, hostCost.Item2, intBattles, meat, tokens, honour, pots);
-            
+            if (hpm > 0)
+            {
+                row.UpdateHonourPerMin(hpm);
+            }
             result.Add(row);
             return result;
         }
@@ -508,5 +759,24 @@ namespace NeverGuildWar_Buddy.Classes
         NM100,
         NM150,
         NM200
+    }
+
+    enum raidCost
+    {
+        NM90 = 5,
+        NM95 = 10,
+        NM100 = 20,
+        NM150 = 20,
+        NM200 = 30
+    }
+    enum raidHonours
+    {
+        NM90 = 260000,
+        NM95 = 910000,
+        NM100 = 2650000,
+        NM150 = 4100000,
+        NM200 = 10250000
+        
+
     }
 }

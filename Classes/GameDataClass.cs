@@ -97,6 +97,14 @@ namespace GBF_Never_Buddy.Classes
                     ConvertedTime();
                 }
 
+                public string InsertQuery(int id)
+                {
+                    string query = $"INSERT INTO [SetupDetails] ([Id], [Difficulty], [Time], [RaidID], [Element], [Revive]," +
+                        $" [ReviveTimes], [Type], [Description]) VALUES" +
+                        $"(@id, @diff, @time, @raid, @el, @rev, @revT, @type, @desc)";
+                    return query;
+                }
+
                 private TimeSpan ConvertedTime()
                 {   
                     TimeSpan conTime;
